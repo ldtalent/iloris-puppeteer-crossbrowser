@@ -9,7 +9,6 @@
     "scrapeWithHeaders": "node index.js scrapeWithHeaders",
     "toJson": "node index.js toJson",
     "toPng": "node index.js toPng",
-    "toPdf": "node index.js toPdf",
     "login": "node index.js login",
     "help": "node index.js --help"
   },

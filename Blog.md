@@ -40,7 +40,7 @@ In order to get the best out of this lecture, the following requirements need to
 
 In order to get the best out of this lecture, the following requirements need to be satisfied.
 
-1. Node.js: The most recent version of **Node.js** installed or at least, an **LTS** version of **Node.js** downloaded from their website [Node.js](https://www.nodejs.org). 
+1. Node.js: The most recent version of **Node.js** installed or at least, an **LTS** version of **Node.js** downloaded from their website [Node.js](https://www.nodejs.org).
 
 2. Npm Installed: The most recent version of **Npm** should be installed, there are several package managers for **Javascript**, but for this lesson, I recommend **Npm**. You can verify its installation by running **npm -v** in your **Terminal** or **CMD**.
 
@@ -60,18 +60,17 @@ With the requirements all satisfied, we can then now begin building our **Scrape
         / public
             /img
             /json
-            /pdf
-            
+
         index.js
         package.json
 
 ## 1. Editing Our Package.json File (Root Directory)
 
-Open the `package.json` file in the **Project's Root Directory** and copy and paste the following code snippet below. This will install all of the needed dependencies for the project. 
+Open the `package.json` file in the **Project's Root Directory** and copy and paste the following code snippet below. This will install all of the needed dependencies for the project.
 
-After editing the `package.json`, open the project in your terminal and run the command `npm install`. This will create a `node_modules folder` inside of the project. 
+After editing the `package.json`, open the project in your terminal and run the command `npm install`. This will create a `node_modules folder` inside of the project.
 
-[gist][/gist]
+[gist]b08407fbf74ef7f3f1f06e28a7c054dc[/gist]
 
 ## 2. Editing Our Index.js File (Root Directory)
 
@@ -79,7 +78,7 @@ The `index.js` file is the `entry-point` into our application. This file loads u
 
 Open the `index.js` file and paste the github gist below into the file.
 
-[gist][/gist]
+[gist]af337d6fdd7c713bb01bd479f5b4bbec[/gist]
 
 This file makes use of the `yargs Module` to parse command line arguements. We are using this approach because it is the easiest way to practise **Web Scraping**. You can also create a **Web View** for this but for this lesson, everything will be done from the `terminal or cmd`.
 
@@ -89,13 +88,13 @@ This file covers how to build a `simple scraper with Headers and without Headers
 
 With that said, open or create this file inside of the `app directory` and paste the following github gist into the file.
 
-[gist][/gist]
+[gist]302c1d5465c3feb0f3d050a5c759178d[/gist]
 
 This Class loads in two modules namely; _cheerio and request-promise_. This two modules makes the job a whole lot easier for use. Let's talk about the **scrape** method provided inside of this Class.
 
 ### The scrape Method
 
-This method contains an Options object which holds all of the configs necessary to make an **HTTP REQUEST**. Inside of the Options Object, there is a `key` called `transform` which contains a function that makes use of the `Cheerio Module`. 
+This method contains an Options object which holds all of the configs necessary to make an **HTTP REQUEST**. Inside of the Options Object, there is a `key` called `transform` which contains a function that makes use of the `Cheerio Module`.
 
 This makes it so that the response from the request is passed into the function and transformed. You can find more knowledge by reading the documentations for the [`Request Promise Library`](https://npm.com)
 
@@ -119,21 +118,21 @@ The rest of the operation under this method is the same as the `scrape method`.
 
 In conclusion, the `BasicScraper.js file` sends an `HTTP REQUEST` to the [webscraper.io Example Websites Tablet Category.](https://webscraper.io/test-sites/e-commerce/static/computers/tablets) Our scraper only fetches information such as `the product price, product name, description, reviews and ratings`.
 
-With that said and done, we just built our very first and simple web scraper. In the next paragraph we will talk about saving the response we get back from the operation into a json file, generating screenshots and pdfs.
+With that said and done, we just built our very first and simple web scraper. In the next paragraph we will talk about saving the response we get back from the operation into a json file, and generating screenshots.
 
 ## 4. Editing Our ScraperToJson.js File (App Directory)
 
-Inside of this file, we will discuss how to save the response from a scraper to json, generate pdfs and take screenshots of the web page being scraped. This file loads in a few modules such as `fs, cheerio, request-promise, and puppeteer.`
+Inside of this file, we will discuss how to save the response from a scraper to json, and take screenshots of the web page being scraped. This file loads in a few modules such as `fs, cheerio, request-promise, and puppeteer.`
 
 Open the app directory, `create or open the ScraperToJson.js File` and paste the code snippets below into the file.
 
-[gist][/gist]
+[gist]6a58e82806918fcb8b992bc18a0bab42[/gist]
 
-Inside of this file lives a class called the same name as the file name. This class contains `4 Methods` namely; `toJson, toPng, autoScroll and toPdf`. Inside of this class, we will be scraping the `tablets catalog under computers` from [Jumia Website](https://www.jumia.com.ng/laptops/)
+Inside of this file lives a class called the same name as the file name. This class contains `4 Methods` namely; `toJson, toPng, and autoScroll`. Inside of this class, we will be scraping the `tablets catalog under computers` from [Jumia Website](https://www.jumia.com.ng/laptops/)
 
 ### The toJson Method
 
-This method contains an `Options Object` like the previous example. We are making a request to the website without any `HEADERS` provided. `HEADERS` will be generated on the fly when our request is made. 
+This method contains an `Options Object` like the previous example. We are making a request to the website without any `HEADERS` provided. `HEADERS` will be generated on the fly when our request is made.
 
 The `Options Object` also contains a `transform key` which makes use of the `Cheerio Module` to transform the response body we get back from the request.
 
@@ -141,7 +140,7 @@ After creating our `Options Object`, we can now proceed to making our `HTTP REQU
 
 Inside of the `.then callback method`, we begin by using some `Css Selectors` to traverse the `Html response` received from the request which has been transformed into a `Cheerio Object.`
 
-We traverse the `Html Response` received, iterate through the contents and create a `JSON Response` which is written to the file system by using the `Fs Module we required or imported into the ScraperToJson Scope.` 
+We traverse the `Html Response` received, iterate through the contents and create a `JSON Response` which is written to the file system by using the `Fs Module we required or imported into the ScraperToJson Scope.`
 
 The `.catch method` is used to handle exceptions which might have occurred from the `request`. We also made use of the callback method passed to the `Fs.writeFile Method` which helps us determine if an error occurred during the operation. In the absence of any, a new File called `jumia.json` is created inside of the `json directory in the public folder.` and a `Json Response` is also printed to the `terminal`.
 
@@ -157,25 +156,32 @@ The method creates an launches a new Browser Instance, creates a new page and po
 
 The `autoScroll Method` takes in a `Page object` whcih is created from the `Puppeteer Library` and calls the `Puppeteer evaluate method` on it. Inside of this method, we create a `setInterval` which scrolls the Page every 5 seconds by incrementing the `Page current height` with `100`. The operation stops once the totalHeight scrolled is equal to the Page's Height.
 
-### The toPdf Method
-
-The `toPdf Method` is a lot similar to the `toPng Method`, only that the `toPdf Method` generates a `Pdf` instead of a screenshot. There is nothing new here in the codebase. The only new snippet introduced is the `Page.pdf Method` which generates a `Pdf` of the current Page using the Options Object Provided as an arguement.
-
-That is how easy it is to automate a webpage. `Google's Puppeteer` has a whole of method to offer which makes scraping or automation fun. You can head over to their docs on [Google Puppeteer](https://google.com).
-
-In conclusion, we just save the response from our scraper to `Json, generate Png Images and Pdf Files`. In the next chapter, we will talk about how to `automate` a `login` process.
-
 ## 5. Editing Our AuthenticationScraper.js File (App Directory)
 
 Inside of this File, we have a class that contains one Method. This class depends on the `Puppeteer Module or Library`. In this file, we will be using the E-commerce website from the last chapter [Jumia](https://jumia.com.ng).With that said, Open the app directory and create or edit the `AuthenticationScraper.js` file.
 
-With that out of the way, copy and paste the Git gist below into the file.
+With that out of the way, copy and paste the Git gist below into the file and change the field with **YOUR-EMAIL-ADDRESS, and YOUR-CODELIGHTERS-PASSWORD** to your [**codelighters login credentials**](https://www.codelighters.com).
 
-[gist][/gist]
+[gist]768ff46b377bcc20dcf18abb4b954960[/gist]
 
 This Class contains just one method. The `login Method` and this method makes use of the `Puppeteer library` to login a user by emulating user behaviours on the browser such as Clicks and inputs. We can also authenticate a user by using the `request-promise library` but I will be leaving you to try that so you can improve your **web scraping** skills.
 
 With that pointed out, below are some of the screenshots of running this project in our terminal. You can get some knowledge about the command required by checking the `index.js file`, `package.json scripts key` or running the command `npm run help` in the terminal with the project current directory opened.
+
+##### **npm run scrapeBasic Command**
+[Node.js web scraper puppeteer cross browser testing](https://res.cloudinary.com/dw0donhwr/image/upload/v1596613785/Screenshot_from_2020-07-27_18-27-37_okchh5.png)
+
+#### **npm run scrapeWithHeaders Command**
+[Node.js web scraper puppeteer cross browser testing](https://res.cloudinary.com/dw0donhwr/image/upload/v1596613785/Screenshot_from_2020-07-27_18-28-42_bbs1ch.png)
+
+#### **npm run toJson Command**
+[Node.js web scraper puppeteer cross browser testing](https://res.cloudinary.com/dw0donhwr/image/upload/v1596613785/Screenshot_from_2020-07-27_18-29-03_tqcyfz.png)
+
+#### **npm run toPng Command**
+[Node.js web scraper puppeteer cross browser testing](https://res.cloudinary.com/dw0donhwr/image/upload/v1596613785/Screenshot_from_2020-07-27_18-36-53_utn3hk.png)
+
+#### **npm run login Command**
+[Node.js web scraper puppeteer cross browser testing](https://res.cloudinary.com/dw0donhwr/image/upload/v1596614390/Screenshot_from_2020-08-05_08-59-25_jx1njx.png)
 
 In conclusion, that's how you build a **Web Scraper**. I hope I was able to make things simple enough for you to understand. With that said, let's talk about the learning tools next.
 
@@ -183,7 +189,7 @@ In conclusion, that's how you build a **Web Scraper**. I hope I was able to make
 
 There are a lot of learning tools online. But in case you are looking, I recommend you visit the following URL.
 
-1. **Node.js** Official Website [Node.js](https://nodejs.org/en/docs/). This is the #1 goto place to learn how **Node.js** works. It holds a whole lot of documentation which explains different methods in **Node.js** 
+1. **Node.js** Official Website [Node.js](https://nodejs.org/en/docs/). This is the #1 goto place to learn how **Node.js** works. It holds a whole lot of documentation which explains different methods in **Node.js**
 
 2. Brad Traversy is my #1 goto mentor to learn any new programming language or how to create features in any programming language. You can google the name **Brad Traversy** and follow the search results up especially the youtube links.
 
@@ -205,7 +211,7 @@ You can improvise and improve the functionalities of this program or application
 
 ## Conclusion
 
-This project mainly focuses on building a **Web Scraper** in **Node.js**. If you ever thought **Node.js** was scary or something, I used to think the same way not until I realize that it's just javascript running in a different environment. 
+This project mainly focuses on building a **Web Scraper** in **Node.js**. If you ever thought **Node.js** was scary or something, I used to think the same way not until I realize that it's just javascript running in a different environment.
 
 This is just one of the few things you can create with **Node.js** plus, building a **Web Scraper** is a nice skill to have under your belt. You can get the best of **Node.js** by extending this application further. I believe in you to create something great. Once again, my name is Ilori Stephen. Thank you for reading.
 

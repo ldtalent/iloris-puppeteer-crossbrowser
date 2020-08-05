@@ -98,30 +98,6 @@ class ScraperToJson {
       });
     });
   }
-
-  async toPdf() {
-    const Browser = await Puppeteer.launch({
-      headless: false,
-    });
-
-    const Page = await Browser.newPage();
-    await Page.goto('https://www.jumia.com.ng/laptops/');
-
-    await Page.waitForSelector('img', {
-      visible: true
-    })
-
-    await this.autoScroll(Page);
-
-    await Page.emulateMediaType('screen')
-
-    await Page.pdf({
-      path: './public/img/' + new Date().toISOString() + '.png',
-      format: 'A4'
-    });
-
-    await Browser.close();
-  }
 }
 
 module.exports = new ScraperToJson();

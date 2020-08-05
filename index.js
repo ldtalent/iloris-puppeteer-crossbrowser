@@ -12,7 +12,6 @@ const YargsArgV = Yargs
   .command('scrapeWithHeaders', 'Scrapes a website with headers. Be sure to Hack the Js File in app/BasicScraper!')
   .command('toJson', 'Scrapes a website and saves the result to a json file. Be sure to Hack the Js File in app/ScraperToJson!')
   .command('toPng', 'Scrapes a website and saves some screenshot of the Webpage. Be sure to Hack the Js File in app/ScraperToJson!')
-  .command('toPdf', 'Scrapes a website and saves the result as an A4 PDF. Be sure to Hack the Js File in app/ScraperToJson!')
   .command('login', 'Logs a user in to codelighters.com using their credentials!')
   .help().argv;
 
@@ -29,8 +28,6 @@ const Command = YargsArgV._[0];
       ScraperToJson.toJson();
   } else if (Command === 'toPng') {
     await ScraperToJson.toPng();
-  } else if (Command === 'toPdf') {
-    await ScraperToJson.toPdf();
   } else if (Command == 'login') {
     await AuthenticationScraper.login();
   } else {
