@@ -113,6 +113,8 @@ class ScraperToJson {
 
     await this.autoScroll(Page);
 
+    await Page.emulateMediaType('screen')
+
     await Page.pdf({
       path: './public/img/' + new Date().toISOString() + '.png',
       format: 'A4'
