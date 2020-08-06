@@ -20,4 +20,4 @@ In this project, We experimented with `Jumia:` An E-commerce website in Africa t
 
 We also experimented with `webscraper.io:` A website that provides some sample website for scraping. They also sell some useful plugins that could be used for scraping.
 
-You can make a `fork this project and make a pull request` if you know you have some ideas you'd like to implement extending this project further. Once again, my name is Ilori Stephen A and I am currently looking for a Job. You can download my `Resume` from [My CV](https://blog.learningdollars.com).
+You can make a `fork this project and make a pull request` if you know you have some ideas you'd like to implement extending this project further. Once again, my name is Ilori Stephen A.
