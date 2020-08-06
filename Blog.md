@@ -215,4 +215,4 @@ This project mainly focuses on building a **Web Scraper** in **Node.js**. If you
 
 This is just one of the few things you can create with **Node.js** plus, building a **Web Scraper** is a nice skill to have under your belt. You can get the best of **Node.js** by extending this application further. I believe in you to create something great. Once again, my name is Ilori Stephen. Thank you for reading.
 
-[Get the complete project from github](https://github.com/learningdollars/ilori-cli-node).
+[Get the complete project from github](https://github.com/learningdollars/iloris-puppeteer-crossbrowser).
